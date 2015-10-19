@@ -4,14 +4,12 @@ if [ $(getent passwd vagrant) ]; then
   ENVIRONMENT=dev
 else
   ENVIRONMENT=production
-  if [ ! -e /opt/puppet ]; then
-    $(git clone https://github.com/spanneberg/eyod-workshop.git /tmp/provisioning && mv /tmp/provisioning/puppet /opt/puppet)
-  else
-    $(cd /opt/puppet && git pull )
-  fi
+  git clone https://github.com/spanneberg/eyod-workshop.git /tmp/provisioning
+  mv /tmp/provisioning/puppet /opt/puppet
+  rm -rf /tmp/provisioning
 fi
 
-echo "Running provisiong for node $(fqdn) in environment ${ENVIRONMENT}"
+echo "Running provisiong for $(hostname)/$(hostname -i) in environment ${ENVIRONMENT}"
 
 # run r10k
 echo "Running r10k ..."

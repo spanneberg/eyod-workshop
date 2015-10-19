@@ -5,8 +5,7 @@ if [ $(getent passwd vagrant) ]; then
 else
   ENVIRONMENT=production
   if [ ! -e /opt/puppet ]; then
-    mkdir /opt/puppet
-    $(cd /opt/puppet && git clone git@github.com:spanneberg/eyod-workshop.git)
+    $(git clone https://github.com/spanneberg/eyod-workshop.git /tmp/provisioning && mv /tmp/provisioning/puppet /opt/puppet)
   else
     $(cd /opt/puppet && git pull )
   fi

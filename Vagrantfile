@@ -11,7 +11,7 @@ Vagrant.configure(2) do |config|
     gitlab.vm.hostname = "gitlab.local"
     gitlab.vm.network "private_network", ip: "192.168.33.10"
     gitlab.vm.provider "virtualbox" do |vb|
-      vb.memory = "1536"
+      vb.memory = "2048"
     end
   end
 

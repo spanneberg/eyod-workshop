@@ -6,6 +6,9 @@ echo "Running bootsrapping"
 echo "Generating locales ..."
 sudo locale-gen de_DE.UTF-8 en_US.UTF-8
 
+echo "Installing git ..."
+sudo apt-get -y install git ruby1.9.1
+
 # install puppet 4 and remove unused deps
 echo "Checking Puppet installation ..."
 if [ ! -e /opt/puppetlabs ]; then

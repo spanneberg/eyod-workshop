@@ -33,3 +33,5 @@ echo "Running Puppet ..."
   --environment $ENVIRONMENT \
   $TARGET_DIR/environments/$ENVIRONMENT/manifests/site.pp
 
+# todo
+# * update provision.sh and bootstrap.sh (?)

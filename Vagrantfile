@@ -26,8 +26,8 @@ Vagrant.configure(2) do |config|
   #   vb.memory = "1024"
   # end
 
-  config.vm.provision "shell", path: "shell/bootstrap.sh"
-  config.vm.provision "shell", path: "shell/provision.sh"
+  config.vm.provision "shell", path: "scripts/bootstrap.sh"
+  config.vm.provision "shell", path: "scripts/provision.sh"
 
   # config.vm.provision "puppet" do |puppet|
   #   puppet.options            = "--verbose"

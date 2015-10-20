@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# todo
+# * create cron job to run puppet
+# * create dir under /var/log to hold logs of puppet runs
+# * create logrotation for log dir
+
 echo "Running bootsrapping"
 
 # fix broken locale

@@ -16,8 +16,6 @@ else
   $( cd $CHECKOUT_DIR && git pull )
 fi
 
-START_TIME=`date +"%T"`
-
 echo "$(date +\"%T\"): Running provisiong for $(hostname)/$(hostname -i) in environment ${ENVIRONMENT}"
 
 # run r10k

@@ -1,18 +1,22 @@
 #!/bin/sh
 
+# bootstrap new machines with the command
+# > curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/bootstrap.sh | sh
+# with superuser rights
+
 # todo
 # * create cron job to run puppet
 # * create dir under /var/log to hold logs of puppet runs
 # * create logrotation for log dir
 
-echo "Running bootsrapping"
+echo "$(date +\"%T\"): Running bootsrapping"
 
 # fix broken locale
 echo "Generating locales ..."
-sudo locale-gen de_DE.UTF-8 en_US.UTF-8
+locale-gen de_DE.UTF-8 en_US.UTF-8
 
 echo "Installing git ..."
-sudo apt-get -y install git ruby1.9.1
+apt-get -y install git ruby1.9.1
 
 # install puppet 4 and remove unused deps
 echo "Checking Puppet installation ..."
@@ -20,10 +24,10 @@ if [ ! -e /opt/puppetlabs ]; then
   echo "Not found. Installing Puppet"
   cd /tmp
   wget https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb
-  sudo dpkg -i puppetlabs-release-pc1-trusty.deb
-  sudo apt-get update
-  sudo apt-get -y install puppet-agent
-  sudo apt-get autoremove -y
+  dpkg -i puppetlabs-release-pc1-trusty.deb
+  apt-get update
+  apt-get -y install puppet-agent
+  apt-get autoremove -y
 else
   echo "Already installed."
 fi
@@ -31,7 +35,12 @@ fi
 # install r10k to manage puppet dependencies
 echo "Checking r10k installation ..."
 if [ -z "$( gem list | grep r10k )" ]; then
-  sudo gem install r10k
+  gem install r10k
 else
   echo "Already installed."
+fi
+
+if [ ! -e /bin/provision.sh ]; then
+  curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/bootstrap.sh > /bin/provision.sh
+  chmod +x /bin/provision.sh
 fi

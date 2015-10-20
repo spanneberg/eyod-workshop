@@ -31,5 +31,6 @@ echo "Running Puppet ..."
   --environment $ENVIRONMENT \
   $TARGET_DIR/environments/$ENVIRONMENT/manifests/site.pp
 
-# todo
-# * update provision.sh and bootstrap.sh (?)
+echo "Updating provisioning script ..."
+curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/bootstrap.sh > /bin/provision.sh
+chmod +x /bin/provision.sh

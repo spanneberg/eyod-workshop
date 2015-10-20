@@ -15,7 +15,7 @@ echo "$(date +\"%T\"): Running bootsrapping"
 echo "Generating locales ..."
 locale-gen de_DE.UTF-8 en_US.UTF-8
 
-echo "Installing git ..."
+echo "Installing packages ..."
 apt-get -y install git ruby1.9.1
 
 # install puppet 4 and remove unused deps
@@ -41,6 +41,7 @@ else
 fi
 
 if [ ! -e /bin/provision.sh ]; then
+  echo "Installing for provisioning script ..."
   curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/bootstrap.sh > /bin/provision.sh
   chmod +x /bin/provision.sh
 fi

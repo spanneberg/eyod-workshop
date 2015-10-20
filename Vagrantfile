@@ -31,7 +31,7 @@ Vagrant.configure(2) do |config|
 
   # config.vm.provision "puppet" do |puppet|
   #   puppet.options            = "--verbose"
-  #   puppet.environment        = "production"
+  #   puppet.environment        = "dev"
   #   puppet.environment_path   = "puppet/environments"
   #   puppet.hiera_config_path  = "puppet/hiera/hiera.yaml"
   # end

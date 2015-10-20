@@ -9,7 +9,14 @@
 # * create dir under /var/log to hold logs of puppet runs
 # * create logrotation for log dir
 
-echo "$(date +%T): Running bootsrapping"
+# check if we run in dev or prod environment and update infra code if we are in prod
+if [ $(getent passwd vagrant) ]; then
+  ENVIRONMENT=dev
+else
+  ENVIRONMENT=production
+fi
+
+echo "$(date +%T): Running bootsrapping for environment $ENVIRONMENT"
 
 # fix broken locale
 echo "Generating locales ..."
@@ -40,8 +47,8 @@ else
   echo "Already installed."
 fi
 
-if [ ! -e /bin/provision.sh ]; then
-  echo "Installing for provisioning script ..."
+if [ ! -e /bin/provision.sh -a "$ENVIRONMENT" != "dev" ]; then
+  echo "Installing provisioning script ..."
   curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/provision.sh > /bin/provision.sh
   chmod +x /bin/provision.sh
 fi

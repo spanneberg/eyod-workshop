@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# check if we run in dev or prod environment and update infra code if we are in prod
+if [ $(getent passwd vagrant) ]; then
+  ENVIRONMENT=dev
+else
+  ENVIRONMENT=production
+fi
+
 echo "$(date +%T): Running provisiong for $(hostname)/$(hostname -i) in environment ${ENVIRONMENT}"
 
 GIT_URL="https://github.com/spanneberg/eyod-workshop.git"
@@ -31,6 +38,11 @@ echo "Running Puppet ..."
   --environment $ENVIRONMENT \
   $TARGET_DIR/environments/$ENVIRONMENT/manifests/site.pp
 
+# only update provisioning script if not in dev environment, otherwise local dev version gets overwritten
 echo "Updating provisioning script ..."
-curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/provision.sh > /bin/provision.sh
+if [ "$ENVIRONMENT" != "dev" ]; then
+  curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/provision.sh > /bin/provision.sh
+else
+  cp /vagrant/scripts/provision.sh /bin/provision.sh
+fi
 chmod +x /bin/provision.sh

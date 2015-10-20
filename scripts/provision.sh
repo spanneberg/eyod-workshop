@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "$(date +%T): Running provisiong for $(hostname)/$(hostname -i) in environment ${ENVIRONMENT}"
+
 GIT_URL="https://github.com/spanneberg/eyod-workshop.git"
 CHECKOUT_DIR="/opt/eyod-workshop"
 TARGET_DIR="/opt/puppet"
@@ -15,8 +17,6 @@ else
   fi
   $( cd $CHECKOUT_DIR && git pull )
 fi
-
-echo "$(date +\"%T\"): Running provisiong for $(hostname)/$(hostname -i) in environment ${ENVIRONMENT}"
 
 # run r10k
 echo "Running r10k ..."

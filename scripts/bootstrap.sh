@@ -9,7 +9,7 @@
 # * create dir under /var/log to hold logs of puppet runs
 # * create logrotation for log dir
 
-echo "$(date +\"%T\"): Running bootsrapping"
+echo "$(date +%T): Running bootsrapping"
 
 # fix broken locale
 echo "Generating locales ..."

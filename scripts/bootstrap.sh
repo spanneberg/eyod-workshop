@@ -42,6 +42,6 @@ fi
 
 if [ ! -e /bin/provision.sh ]; then
   echo "Installing for provisioning script ..."
-  curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/bootstrap.sh > /bin/provision.sh
+  curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/provision.sh > /bin/provision.sh
   chmod +x /bin/provision.sh
 fi

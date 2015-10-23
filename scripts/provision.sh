@@ -22,7 +22,7 @@ else
     git clone $GIT_URL $CHECKOUT_DIR
     ln -s $CHECKOUT_DIR/puppet $TARGET_DIR
   fi
-  $( cd $CHECKOUT_DIR && git pull )
+  ( cd $CHECKOUT_DIR && git pull )
 fi
 
 # run r10k

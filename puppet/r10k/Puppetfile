@@ -3,3 +3,6 @@ moduledir '../external_modules'
 mod 'puppetlabs/stdlib',  '4.9.0'
 mod 'puppetlabs/apt',     '2.2.0'
 mod 'vshn/gitlab',        '1.5.0'
+
+mod 'artifactory',
+  :git => 'https://github.com/spanneberg/puppet-artifactory.git'

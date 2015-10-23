@@ -19,6 +19,9 @@ Vagrant.configure(2) do |config|
     config.vm.define "ci#{i}" do |node|
       node.vm.hostname = "ci#{i}.local"
       node.vm.network "private_network", ip: "192.168.33.#{20 + i}"
+      node.vm.provider "virtualbox" do |vb|
+        vb.memory = "2048"
+      end
     end
   end
 
@@ -33,7 +36,7 @@ Vagrant.configure(2) do |config|
   #   puppet.options            = "--verbose"
   #   puppet.environment        = "dev"
   #   puppet.environment_path   = "puppet/environments"
-  #   puppet.hiera_config_path  = "puppet/hiera/hiera.yaml"
+  #   puppet.hiera_config_path  = "puppet/hiera.yaml"
   # end
 
 end

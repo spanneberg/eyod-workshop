@@ -7,5 +7,5 @@ node 'ci1.local' {
 }
 
 node 'ci2.local' {
-  # include ::roles::ci_slave_and_sonarqube
+  include ::roles::ci_slave_and_sonarqube
 }

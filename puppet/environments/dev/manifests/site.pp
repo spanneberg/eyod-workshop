@@ -3,7 +3,9 @@ node 'gitlab.local' {
 }
 
 node 'ci1.local' { 
-  include ::roles::artifact_repo 
+  include ::roles::ci_master_and_artifact_repo 
 }
 
-node 'ci2.local' { }
+node 'ci2.local' {
+  # include ::roles::ci_slave_and_sonarqube
+}

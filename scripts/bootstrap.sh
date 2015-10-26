@@ -1,8 +1,7 @@
 #!/bin/sh
 
 # bootstrap new machines with the command
-# > curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/bootstrap.sh | sh
-# with superuser rights
+# > curl https://raw.githubusercontent.com/spanneberg/eyod-workshop/master/scripts/bootstrap.sh | sudo sh
 
 # todo
 # * create cron job to run puppet

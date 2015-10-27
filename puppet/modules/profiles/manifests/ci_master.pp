@@ -20,8 +20,5 @@ class profiles::ci_master {
   jenkins::plugin { 'git':
     version => '2.4.0',
   }
-  jenkins::plugin { 'swarm':
-    version => '2.0',
-  }
 
 }

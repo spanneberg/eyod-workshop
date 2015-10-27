@@ -3,6 +3,7 @@ class profiles::ci_master {
   class { '::jenkins' :
     executors => 2,
   }
+  class { '::jenkins::master' : }
 
   jenkins::plugin { 'credentials':
     version => '1.24',

@@ -1,0 +1,3 @@
+---
+
+jenkins::slave::masterurl: 'http://52.29.74.55:8080'

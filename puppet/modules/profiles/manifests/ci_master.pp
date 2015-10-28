@@ -29,6 +29,7 @@ class profiles::ci_master {
     executors       => 2,
     plugin_hash     => $plugins,
     user_hash       => $users,
+    install_java    => false,
   }
 
   # to enable slaves via swarm
@@ -36,5 +37,5 @@ class profiles::ci_master {
 
   Class['openjdk8'] ->
   Class['jenkins']
-  
+
 }

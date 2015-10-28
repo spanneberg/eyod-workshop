@@ -1,24 +1,35 @@
 class profiles::ci_master {
 
-  class { '::jenkins' :
-    executors => 2,
+  $plugins = {
+    'credentials'     => { version => '1.24' },
+    'ssh-credentials' => { version => '1.11' },
+    'git-client'      => { version => '1.19.0' },
+    'scm-api'         => { version => '0.2' },
+    'git'             => { version => '2.4.0' },
   }
-  class { '::jenkins::master' : }
 
-  jenkins::plugin { 'credentials':
-    version => '1.24',
+  $users = {
+    'admin' => {
+      'password'  => 'eyod!admin',
+      'full_name' => 'Admin',
+      'email'     => 'eyod-admin@example.com',
+    },
+    'homer' => {
+      'password'  => 'eyod!homer',
+      'full_name' => 'Homer',
+      'email'     => 'eyod-homer@example.com',
+    }
   }
-  jenkins::plugin { 'ssh-credentials':
-    version => '1.11',
+
+  class { '::jenkins' :
+    port            => 8080,
+    slaveagentport  => 55555,
+    executors       => 2,
+    plugin_hash     => $plugins,
+    user_hash       => $users,
   }
-  jenkins::plugin { 'git-client':
-    version => '1.19.0',
-  }
-  jenkins::plugin { 'scm-api':
-    version => '0.2',
-  }
-  jenkins::plugin { 'git':
-    version => '2.4.0',
-  }
+
+  # to enable slaves via swarm
+  class { '::jenkins::master' : }
 
 }

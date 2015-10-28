@@ -1,5 +1,7 @@
 class profiles::ci_master {
 
+  include ::openjdk8
+
   $plugins = {
     'credentials'     => { version => '1.24' },
     'ssh-credentials' => { version => '1.11' },
@@ -32,4 +34,7 @@ class profiles::ci_master {
   # to enable slaves via swarm
   class { '::jenkins::master' : }
 
+  Class['openjdk8'] ->
+  Class['jenkins']
+  
 }

@@ -1,0 +1,4 @@
+---
+
+jenkins::slave::slave_name: 'ci2-dev'
+jenkins::slave::description: 'Jenkins slave node w/ SonarQube'

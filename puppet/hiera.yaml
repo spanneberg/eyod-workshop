@@ -1,11 +1,11 @@
 ---
+
 :backends:
   - yaml
 :yaml:
   :datadir: "/opt/puppet"
-  # :datadir: "/opt/puppet/environments/%{::environment}/hieradata"
 :hierarchy:
-  - "environments/%{::environment}/hieradata/nodes/%{::trusted.certname}"
+  - "environments/%{::environment}/hieradata/nodes/%{::fqdn}"
+  - "environments/%{::environment}/hieradata/nodes/%{::hostname}"
   - "environments/%{::environment}/hieradata/common"
-  - "hieradata/nodes/%{::trusted.certname}"
   - "hieradata/common"

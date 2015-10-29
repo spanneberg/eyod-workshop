@@ -1,6 +1,6 @@
 class profiles::artifact_repo {
   
-  class { 'openjdk8' : }
+  include ::openjdk8
   
   class { 'artifactory::config' :
     version       => '4.2.0',
@@ -10,6 +10,7 @@ class profiles::artifact_repo {
   
   class { 'artifactory' : }
 
-  Class['openjdk8'] -> Class['Artifactory::Install']
+  Class['openjdk8'] -> 
+  Class['artifactory::install']
   
 }

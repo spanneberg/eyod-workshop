@@ -1,3 +1,4 @@
 ---
 
 jenkins::slave::masterurl: 'http://192.168.33.21:8080'
+jenkins::slave::install_java: false
